@@ -1,3 +1,4 @@
+//Dataset
 var finances = [
   ['Jan-2010', 867884],
   ['Feb-2010', 984655],
@@ -87,6 +88,7 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
+//Program start
 console.log("Financial Analysis");
 console.log("------------------");
 
@@ -100,6 +102,7 @@ for (var i = 0; i < finances.length; i++){
   profitLoss = profitLoss + finances[i][1];
 }
 
+//Log profit/loss
 console.log("Total: $" + profitLoss);
 
 //Average change
@@ -107,6 +110,7 @@ console.log("Total: $" + profitLoss);
 //Get pnlColumn from finances array
 let pnlColumn = finances.map(col => col[1])
 
+//Calculation totalAverageSum and push every change to totalAverageArray
 var totalAverageSum = 0;
 var totalAverageArray = []
 for (var i = 0; i < pnlColumn.length - 1; i++){
@@ -115,19 +119,22 @@ for (var i = 0; i < pnlColumn.length - 1; i++){
   totalAverageArray.push(change);
 }
 
-
+//Average Change caculation
 var avgChange = totalAverageSum/(totalMonths -1)
 //Average change decimal places to 2
 console.log("Average Change: " + avgChange.toFixed(2))
 
 //Greatest increase in totalAverageArray
 var greatestIncrease = Math.max(...totalAverageArray)
+var greatestIncreaseMonth = finances[totalAverageArray.indexOf(greatestIncrease) + 1][0]
 
 //Greatest decrease in totalAverageArray
 var greatestDecrease = Math.min(...totalAverageArray)
+var greatestDecreaseMonth = finances[totalAverageArray.indexOf(greatestDecrease) + 1][0]
 
-console.log("Greatest Increase in Profits/Losses: ($" + greatestIncrease +")");
-console.log("Greatest Decrease in Profits/Losses: ($" + greatestDecrease +")");
+//Log Greatest Increase/Decrease
+console.log("Greatest Increase in Profits/Losses: "+ greatestIncreaseMonth + " ($" + greatestIncrease +")");
+console.log("Greatest Decrease in Profits/Losses: "+ greatestDecreaseMonth + " ($" + greatestDecrease +")");
 
 
 
