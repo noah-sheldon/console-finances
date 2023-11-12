@@ -96,6 +96,12 @@ console.log("------------------");
 var totalMonths = finances.length;
 console.log("Total Months: " +totalMonths);
 
+//Totalmonths to HTML
+var totalMonthsId = document.getElementById("totalMonths")
+totalMonthsId.textContent=totalMonths;
+
+//Calculate net income and expenses for each month
+
 //Net profit/loss
 var profitLoss = 0;
 for (var i = 0; i < finances.length; i++){
@@ -104,6 +110,11 @@ for (var i = 0; i < finances.length; i++){
 
 //Log profit/loss
 console.log("Total: $" + profitLoss);
+
+//profitLoss to HTML
+var totalPnlId = document.getElementById("totalPnl")
+totalPnlId.textContent = "$" + profitLoss;
+
 
 //Average change
 
@@ -124,13 +135,27 @@ var avgChange = totalAverageSum/(totalMonths -1)
 //Average change decimal places to 2
 console.log("Average Change: " + avgChange.toFixed(2))
 
+//avgChange to HTML
+var avgChangeId = document.getElementById("avgChange")
+avgChangeId.textContent = avgChange.toFixed(2);
+
+
 //Greatest increase in totalAverageArray
 var greatestIncrease = Math.max(...totalAverageArray)
 var greatestIncreaseMonth = finances[totalAverageArray.indexOf(greatestIncrease) + 1][0]
 
+//greatestIncrease to HTML
+var greIncId = document.getElementById("greInc")
+greIncId.textContent = greatestIncreaseMonth + " ($" + greatestIncrease +")";
+
+
 //Greatest decrease in totalAverageArray
 var greatestDecrease = Math.min(...totalAverageArray)
 var greatestDecreaseMonth = finances[totalAverageArray.indexOf(greatestDecrease) + 1][0]
+
+//greatestDecrease to HTML
+var greDecId = document.getElementById("greDec")
+greDecId.textContent = greatestDecreaseMonth + " ($" + greatestDecrease +")";
 
 //Log Greatest Increase/Decrease
 console.log("Greatest Increase in Profits/Losses: "+ greatestIncreaseMonth + " ($" + greatestIncrease +")");
