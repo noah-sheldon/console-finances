@@ -86,3 +86,48 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+console.log("Financial Analysis");
+console.log("------------------");
+
+// Total number of months included in the dataset
+var totalMonths = finances.length;
+console.log("Total Months: " +totalMonths);
+
+//Net profit/loss
+var profitLoss = 0;
+for (var i = 0; i < finances.length; i++){
+  profitLoss = profitLoss + finances[i][1];
+}
+
+console.log("Total: $" + profitLoss);
+
+//Average change
+
+//Get pnlColumn from finances array
+let pnlColumn = finances.map(col => col[1])
+
+var totalAverageSum = 0;
+var totalAverageArray = []
+for (var i = 0; i < pnlColumn.length - 1; i++){
+  var change = pnlColumn[i+1] - pnlColumn[i];
+  totalAverageSum = change + totalAverageSum;
+  totalAverageArray.push(change);
+}
+
+
+var avgChange = totalAverageSum/(totalMonths -1)
+//Average change decimal places to 2
+console.log("Average Change: " + avgChange.toFixed(2))
+
+//Greatest increase in totalAverageArray
+var greatestIncrease = Math.max(...totalAverageArray)
+
+//Greatest decrease in totalAverageArray
+var greatestDecrease = Math.min(...totalAverageArray)
+
+console.log("Greatest Increase in Profits/Losses: ($" + greatestIncrease +")");
+console.log("Greatest Decrease in Profits/Losses: ($" + greatestDecrease +")");
+
+
+
